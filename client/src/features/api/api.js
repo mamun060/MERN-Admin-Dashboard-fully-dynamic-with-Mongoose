@@ -7,17 +7,26 @@ export const apiSlice = createApi({
         baseUrl: process.env.REACT_APP_BASE_URL
     }),
 
-    tagTypes: ["User" , ""],
+    tagTypes: [ 
+        "User" , 
+        "Proucts",
+    ],
 
     endpoints: (build) => ({
         getUser: build.query({
             query: (id)=> `general/user/${id}` ,
             providesTags: ["User"]
         }),
-
+        getProducts: build.query({
+            query: () => "client/products",
+            providesTags: ["Proucts"]
+        })
     }),
 });
 
 
 // export api as a hooks
-export const { useGetUserQuery} = apiSlice;
+export const { 
+    useGetUserQuery,
+    useGetProductsQuery
+} = apiSlice;
