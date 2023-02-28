@@ -10,6 +10,7 @@ export const apiSlice = createApi({
     tagTypes: [ 
         "User" , 
         "Proucts",
+        "customers",
     ],
 
     endpoints: (build) => ({
@@ -20,7 +21,11 @@ export const apiSlice = createApi({
         getProducts: build.query({
             query: () => "client/products",
             providesTags: ["Proucts"]
-        })
+        }),
+        getCustomers: build.query({
+            query: ()=> "client/customers",
+            providesTags:["customers"]
+        }),
     }),
 });
 
@@ -28,5 +33,6 @@ export const apiSlice = createApi({
 // export api as a hooks
 export const { 
     useGetUserQuery,
-    useGetProductsQuery
+    useGetProductsQuery,
+    useGetCustomersQuery
 } = apiSlice;

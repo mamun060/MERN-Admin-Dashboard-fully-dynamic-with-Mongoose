@@ -1,8 +1,8 @@
 import Products from "../models/Products.js";
 import ProductStat from "../models/ProductStat.js";
+import User from "../models/User.js";
 
-
-// write controller logic here
+// get products controller logic here
 
 export const getProducts = async (req, res)=> {
     try {
@@ -24,5 +24,15 @@ export const getProducts = async (req, res)=> {
 
     } catch (error) {
         res.status(404).json({ message: error.message })
+    }
+}
+
+// get customer controller login
+export const getCumtomers =  async (req , res)=> {
+    try {
+        const cumtomers = await User.find({ role: "user"}).select("-password");
+        res.status(200).json(cumtomers);
+    } catch (error) {
+        res.status(404).json({message: error.message })
     }
 }
