@@ -16,9 +16,10 @@ import UserModel from "./models/User.js";
 import Products from "./models/Products.js";
 import ProductStat from "./models/ProductStat.js";
 import Transaction from "./models/Transactions.js";
+import OverallStat from "./models/OverallStat.js";
 
 // dumy data insert from here
-import {dataUser , dataProduct, dataProductStat, dataTransaction} from "./data/index.js";
+import {dataUser , dataProduct, dataProductStat, dataTransaction, dataOverallStat } from "./data/index.js";
 
 // configuration setup 
 
@@ -54,7 +55,7 @@ mongoose.connect(process.env.MONGO_URL, {
     // Products.insertMany(dataProduct);
     // ProductStat.insertMany(dataProductStat)
     // Transaction.insertMany(dataTransaction);
-
+    // OverallStat.insertMany(dataOverallStat);
 }).catch((error)=>{
     console.log(error);
 })
