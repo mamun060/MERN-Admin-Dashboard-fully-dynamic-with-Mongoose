@@ -8,24 +8,33 @@ export const apiSlice = createApi({
     }),
 
     tagTypes: [ 
-        "User" , 
-        "Proucts",
-        "customers",
+        "user" , 
+        "proucts",
+        "ustomers",
+        "transaction"
     ],
 
     endpoints: (build) => ({
         getUser: build.query({
             query: (id)=> `general/user/${id}` ,
-            providesTags: ["User"]
+            providesTags: ["user"]
         }),
         getProducts: build.query({
             query: () => "client/products",
-            providesTags: ["Proucts"]
+            providesTags: ["proucts"]
         }),
         getCustomers: build.query({
             query: ()=> "client/customers",
             providesTags:["customers"]
         }),
+        getTransactions: build.query({
+            query: ({ page, pageSize, sort, search })=> ({
+                url: "client/transactions",
+                method: "GET",
+                params: { page, pageSize, sort, search },
+            }),
+            providesTags: ["transaction"]
+        })
     }),
 });
 
@@ -34,5 +43,6 @@ export const apiSlice = createApi({
 export const { 
     useGetUserQuery,
     useGetProductsQuery,
-    useGetCustomersQuery
+    useGetCustomersQuery,
+    useGetTransactionsQuery
 } = apiSlice;
