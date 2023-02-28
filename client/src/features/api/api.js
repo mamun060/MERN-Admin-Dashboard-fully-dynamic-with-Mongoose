@@ -11,7 +11,8 @@ export const apiSlice = createApi({
         "user" , 
         "proucts",
         "ustomers",
-        "transaction"
+        "transaction",
+        "geography"
     ],
 
     endpoints: (build) => ({
@@ -34,7 +35,12 @@ export const apiSlice = createApi({
                 params: { page, pageSize, sort, search },
             }),
             providesTags: ["transaction"]
-        })
+        }),
+        getGeography: build.query({
+            query: ()=> "client/geography",
+            providesTags: ["geography"]
+        }),
+
     }),
 });
 
@@ -44,5 +50,6 @@ export const {
     useGetUserQuery,
     useGetProductsQuery,
     useGetCustomersQuery,
-    useGetTransactionsQuery
+    useGetTransactionsQuery,
+    useGetGeographyQuery
 } = apiSlice;

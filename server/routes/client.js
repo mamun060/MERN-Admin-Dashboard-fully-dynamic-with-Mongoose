@@ -1,5 +1,5 @@
 import express  from "express";
-import { getProducts , getCumtomers, getTransactions } from "../controllers/clientController.js";
+import { getProducts , getCumtomers, getTransactions, getGeography } from "../controllers/clientController.js";
 
 const router = express.Router();
 
@@ -7,6 +7,7 @@ const router = express.Router();
 router.get("/products", getProducts);
 router.get("/customers", getCumtomers);
 router.get("/transactions", getTransactions)
+router.get("/geography", getGeography)
 
 
 export default router;

@@ -9,6 +9,7 @@ import Dashboard from "screens/dashboard/Dashboard";
 import Products from "screens/product/Products";
 import Customers from "screens/customers/Customers";
 import Transactions from "screens/transactions/Transactions";
+import Geography from "screens/geography/Geography";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
               <Route path="/products" element={ <Products /> } />
               <Route path="/customers" element={<Customers />} />
               <Route path="/transactions" element={ <Transactions />} />
+              <Route path="/geography" element={ <Geography />} />
             </Route>
           </Routes>
         </ThemeProvider>
