@@ -13,7 +13,8 @@ export const apiSlice = createApi({
         "ustomers",
         "transaction",
         "geography",
-        
+        "performance",
+        "dashboard"
     ],
 
     endpoints: (build) => ({
@@ -45,7 +46,18 @@ export const apiSlice = createApi({
             query: ()=> "sales/sales",
             providesTags: ["sales"]
         }),
-
+        getAdmins: build.query({
+            query: () => "management/admins",
+            providesTags: ["Admins"],
+        }),
+        getUserPerformance: build.query({
+            query: (id) => `management/performance/${id}`,
+            providesTags: ["performance"],
+        }),
+        getDashboard: build.query({
+            query: ()=>"general/dashboard",
+            providesTags: ["dashboard"]
+        }),
     }),
 });
 
@@ -57,5 +69,8 @@ export const {
     useGetCustomersQuery,
     useGetTransactionsQuery,
     useGetGeographyQuery,
-    useGetSalesQuery
+    useGetSalesQuery,
+    useGetAdminsQuery,
+    useGetUserPerformanceQuery,
+    useGetDashboardQuery
 } = apiSlice;
