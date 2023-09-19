@@ -16,6 +16,16 @@ import Monthly from "screens/monthly/Monthly";
 import Breakdown from "screens/breakdown/Breakdown";
 import Admin from "screens/admins/Admin";
 import Performance from "screens/performance/Performance";
+import {
+  SignedIn,
+  SignedOut,
+  RedirectToSignIn,
+  SignIn,
+} from "@clerk/clerk-react";
+
+if (!process.env.REACT_APP_CLERK_PUBLISHABLE_KEY) {
+  throw "Missing Publishable Key"
+}
 
 
 function App() {
@@ -27,8 +37,22 @@ function App() {
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />
+
           <Routes>
-            <Route element={<Layout />}>
+            <Route
+              path="/sign-in/*"
+              element={<SignIn routing="path" path="/sign-in" />}
+            />
+            <Route element={
+              <>
+              <SignedIn>
+                <Layout />
+              </SignedIn>
+              <SignedOut>
+                <RedirectToSignIn />
+              </SignedOut>
+              </>
+            }>
               <Route path="/" element={ <Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/products" element={ <Products /> } />

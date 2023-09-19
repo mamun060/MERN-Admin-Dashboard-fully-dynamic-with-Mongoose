@@ -12,8 +12,9 @@ import { useDispatch } from 'react-redux';
 import { setMode } from 'features/state/globalStateSlice';
 import ProfileImage from "../assets/profile.jpeg";
 import { AppBar, Box, Button, IconButton, InputBase, Menu, MenuItem, Toolbar, Typography, useTheme } from '@mui/material';
+import { UserButton } from '@clerk/clerk-react';
 
-export default function Navbar({ user, isSidebarOpen , setIsSidebarOpen }) {
+export default function Navbar({ isSidebarOpen , setIsSidebarOpen }) {
     const dispatch = useDispatch();
     const theme = useTheme();
 
@@ -59,7 +60,7 @@ export default function Navbar({ user, isSidebarOpen , setIsSidebarOpen }) {
             <SettingsOutlined sx={{ fontSize: "25px" }} />
           </IconButton>
 
-          <FlexBetween>
+          {/* <FlexBetween>
             <Button
               onClick={handleClick}
               sx={{
@@ -106,6 +107,9 @@ export default function Navbar({ user, isSidebarOpen , setIsSidebarOpen }) {
             >
               <MenuItem onClick={handleClose}>Log Out</MenuItem>
             </Menu>
+          </FlexBetween> */}
+          <FlexBetween>
+            <UserButton />
           </FlexBetween>
         </FlexBetween>
 
